@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -39,7 +40,6 @@ public class LoginActivity extends AppCompatActivity {
 
     public static final String LOGIN_URL = "http://maroon-and-gold.000webhostapp.com/tekbook/db_get_data.php";
     public static final String JSON_ARRAY = "result";
-    private ProgressDialog loading;
     public static final String KEY_ID = "user_id";
     public static final String KEY_USERNAME = "username";
     public static final String KEY_LASTNAME = "lastname";
@@ -91,14 +91,18 @@ public class LoginActivity extends AppCompatActivity {
         username = et_username.getText().toString().trim();
         password = et_password.getText().toString().trim();
 
+        //Showing the progress dialog
+        final ProgressBar bar = (ProgressBar) findViewById(R.id.progressBar);
+        bar.setVisibility(View.VISIBLE);
+
         if(!IsReachable(LoginActivity.this)){
             Toast.makeText(LoginActivity.this, "Please check your internet connection!", Toast.LENGTH_LONG).show();
-            //loading.dismiss();
+            bar.setVisibility(View.GONE);
         }else {
             if (username.isEmpty() || password.isEmpty()) {
                 Toast.makeText(LoginActivity.this, "Fields are empty!", Toast.LENGTH_LONG).show();
             } else {
-                //loading = ProgressDialog.show(this,"Status", "Checking credentials...", false, false);
+                bar.setVisibility(View.GONE);
 
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, LOGIN_URL,
                         new Response.Listener<String>() {
@@ -124,7 +128,7 @@ public class LoginActivity extends AppCompatActivity {
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
-                                //loading.dismiss();
+                                bar.setVisibility(View.GONE);
                                 try{
                                     if(status.equals("success")){
                                         Toast.makeText(LoginActivity.this, "Welcome " + username, Toast.LENGTH_LONG).show();
@@ -159,7 +163,7 @@ public class LoginActivity extends AppCompatActivity {
                             @Override
                             public void onErrorResponse(VolleyError error) {
                                 Toast.makeText(LoginActivity.this, "Please check your internet connection!", Toast.LENGTH_LONG).show();
-                                //loading.dismiss();
+                                bar.setVisibility(View.GONE);
                             }
                         }) {
                     @Override

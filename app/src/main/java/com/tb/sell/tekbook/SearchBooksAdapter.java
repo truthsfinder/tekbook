@@ -1,6 +1,7 @@
 package com.tb.sell.tekbook;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +40,12 @@ public class SearchBooksAdapter extends ArrayAdapter<String> {
         tvBookClass.setText(book_class[position]);
         tvPrice.setText("₱"+book_price[position]);
         tvStatus.setText(book_status[position]);
+
+        if(tvStatus.getText().toString().trim().equals("sold")){
+            tvStatus.setTextColor(Color.parseColor("#DF0000"));
+        }else{
+            tvStatus.setTextColor(Color.parseColor("#5eba7d"));
+        }
 
         return listViewItem;
 

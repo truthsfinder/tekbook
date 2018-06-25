@@ -5,53 +5,59 @@
     android:padding="5sp">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="2"
-        android:orientation="horizontal"
-        android:weightSum="1">
-
-        <TextView
-            android:id="@+id/user_name"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1.00"
-            android:gravity="center_vertical"
-            android:padding="5sp"
-            android:text="TextView"
-            android:textColor="#fff"
-            android:textSize="15sp" />
-
-        <TextView
-            android:id="@+id/book_status"
-            android:layout_width="100sp"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:padding="5sp"
-            android:text="TextView"
-            android:textColor="#fff"
-            android:textSize="15sp" />
+        android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="right"
-            android:orientation="vertical">
+            android:gravity="left"
+            android:orientation="vertical"
+            android:layout_weight=".5">
+
+            <TextView
+                android:id="@+id/user_name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="left|center_vertical"
+                android:padding="5sp"
+                android:text="TextView"
+                android:textColor="#fff"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/book_status"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="left|center_vertical"
+                android:padding="5sp"
+                android:textStyle="italic"
+                android:text="TextView"
+                android:textColor="#fff"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
 
             <TextView
                 android:id="@+id/book_class"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="5sp"
                 android:text="TextView"
                 android:gravity="right"
-                android:layout_gravity="right"
                 android:textColor="#fff"
                 android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/book_price"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="5sp"
                 android:text="TextView"
